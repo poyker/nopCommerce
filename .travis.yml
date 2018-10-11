@@ -1,6 +1,9 @@
 language: csharp
 mono: none
 dotnet: 2.1
-script:
+install:
  - dotnet restore ./src/NopCommerce.sln
+ - nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory testrunner
+script:
  - dotnet build ./src/NopCommerce.sln
+ - mono ./testrunner/NUnit.Runners.2.6.4/tools/nunit-console.exe ./src/Tests/Nop.Core.Tests/bin/Release/Nop.Tests.dll
