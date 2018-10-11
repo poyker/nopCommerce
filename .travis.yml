@@ -1,7 +1,6 @@
 language: csharp
-solution: ./src/NopCommerce.sln
 mono: none
 dotnet: 2.1
 script:
- - dotnet restore
- - dotnet build
+ - dotnet restore ./src/NopCommerce.sln
+ - dotnet build ./src/NopCommerce.sln
