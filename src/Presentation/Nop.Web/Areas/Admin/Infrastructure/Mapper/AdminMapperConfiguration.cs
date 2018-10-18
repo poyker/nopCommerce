@@ -3,6 +3,7 @@ using Nop.Core.Domain.Affiliates;
 using Nop.Core.Domain.Blogs;
 using Nop.Core.Domain.Catalog;
 using Nop.Core.Domain.Common;
+using Nop.Core.Domain.Configuration;
 using Nop.Core.Domain.Customers;
 using Nop.Core.Domain.Directory;
 using Nop.Core.Domain.Discounts;
@@ -660,6 +661,9 @@ namespace Nop.Web.Areas.Admin.Infrastructure.Mapper
             CreateMap<AddressSettings, AddressSettingsModel>();
             CreateMap<AddressSettingsModel, AddressSettings>()
                 .ForMember(settings => settings.PreselectCountryIfOnlyOne, options => options.Ignore());
+
+            CreateMap<Setting, SettingModel>()
+                .ForMember(setting => setting.Store, options => options.Ignore());
         }
 
         /// <summary>
@@ -1484,7 +1488,10 @@ namespace Nop.Web.Areas.Admin.Infrastructure.Mapper
         {
             CreateMap<ScheduleTask, ScheduleTaskModel>();
             CreateMap<ScheduleTaskModel, ScheduleTask>()
-                .ForMember(entity => entity.Type, options => options.Ignore());
+                .ForMember(entity => entity.Type, options => options.Ignore())
+                .ForMember(entity => entity.LastStartUtc, options => options.Ignore())
+                .ForMember(entity => entity.LastEndUtc, options => options.Ignore())
+                .ForMember(entity => entity.LastSuccessUtc, options => options.Ignore());
         }
 
         /// <summary>
