@@ -12,3 +12,7 @@ variables:
 steps:
 - script: dotnet build ./src/NopCommerce.sln --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
+- script: dotnet test ./src/Tests/Nop.Core.Tests/Nop.Core.Tests.csproj displayName: 'dotnet test ./src/Tests/Nop.Core.Tests/Nop.Core.Tests.csproj'
+- script: dotnet test ./src/Tests/Nop.Services.Tests/Nop.Services.Tests.csproj displayName: 'dotnet test ./src/Tests/Nop.Services.Tests/Nop.Services.Tests.csproj'
+- script: dotnet test ./src/Tests/Nop.Tests/Nop.Tests.csproj displayName: 'dotnet test ./src/Tests/Nop.Tests/Nop.Tests.csproj'
+- script: dotnet test ./src/Tests/Nop.Web.MVC.Tests/Nop.Web.MVC.Tests.csproj displayName: 'dotnet test ./src/Tests/Nop.Web.MVC.Tests/Nop.Web.MVC.Tests.csproj'
